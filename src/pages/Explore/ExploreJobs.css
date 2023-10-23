@@ -1,0 +1,11 @@
+.explore-center-component{
+   background-color: rgba(33, 44, 135, 0.811);
+   color: white;
+   display: flex;
+   gap:10px;
+   align-items: center;
+   padding:40px;
+}
+.joblist{
+   padding:20px;
+}

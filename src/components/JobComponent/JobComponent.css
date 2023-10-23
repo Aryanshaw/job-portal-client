@@ -1,0 +1,105 @@
+.job-container{
+    margin:20px;
+    padding:20px;
+    border-radius: 20px;
+    box-shadow: 0px 5px 6px 0px rgba(101, 101, 101, 0.3);
+    background-color: rgb(243, 251, 255);
+    max-height: 300px;
+}
+
+.job-title{
+    color:rgb(78, 90, 196);
+    font-size: 30px;
+}
+
+.job-title-container{
+    display:flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.job-title-info{
+    line-height:14px;
+}
+.job-location{
+    font-size:17px;
+    color:gray;
+    margin-top: 5px;
+    text-transform: capitalize;
+}
+
+.job-font{
+    font-size:25px;
+}
+
+.job-salary{
+    font-size:23px;
+    color: rgb(101, 101, 101);
+}
+
+.company-name{
+    font-size:28px;
+    font-weight:550;
+    text-transform:capitalize;
+    color:rgba(132, 132, 132, 0.849);
+}
+
+.job-desc{
+    font-size:18px;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+}
+
+.job-last-container{
+    display: flex;
+    /* gap:80px; */
+    justify-content: space-between;
+
+}
+
+.job-lower-font{
+    font-size: 17px;
+    line-height: 2px;
+}
+.job-lower-title{
+    font-size: 15px;
+    color:rgb(81, 81, 81);
+    line-height: 2px;
+}
+
+.skill-list{
+    display: flex;
+    gap:20px;
+
+}
+
+.skill{
+    background-color:#878787;
+    color:white;
+    padding:4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 13px;
+    margin-top: -8px;
+    border-radius: 5px;
+}
+
+.job-last-lower-container{
+    display:flex;
+    gap:80px;
+}
+
+.detail-btn{
+    width:190px;
+    height:50px;
+    background-color: rgb(78, 90, 196);
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    font-family:'Arial';
+    font-size: 16px;
+    color: white;
+    border: none;
+}

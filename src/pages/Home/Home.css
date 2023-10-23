@@ -1,0 +1,29 @@
+.home-container{
+    overflow:hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: fit-content;
+    /* padding-bottom: 20px; */
+}
+
+.center-component{
+    background-image: url("../../assets/image/centerImage.png");
+    background-size: cover;
+   background-repeat: no-repeat;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding:60px;
+   color:white;
+   height: 100%;
+   width: 100%;
+   justify-content: center;
+   /* overflow:hidden */
+}
+
+p{
+    font-family:'Arial';
+    font-size: 10px;
+    letter-spacing:1px;
+}

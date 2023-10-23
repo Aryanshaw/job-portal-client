@@ -1,0 +1,47 @@
+.work-title{
+    font-size:20px;
+    text-transform: capitalize;
+    text-decoration: underline;
+    margin-bottom: 2px;
+}
+.work-component{
+    padding-left:20px;
+}
+
+.work-font{
+    font-size:15px;
+    text-transform: capitalize;
+}
+.responsibility-title-font{
+    color:gray;
+    line-height: 0px;
+}
+.responsibility-font{
+    line-height: 0px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding-left: 10px;
+}
+
+.work-skill-container{
+    display: flex;
+    gap:10px;
+    margin-top: -20px;
+    
+}
+
+.work-skill{
+   font-size: 14px;
+   background-color: gray;
+   color: white;
+   font-weight: bold;
+   padding:3px;
+   padding-left: 5px;
+   padding-right: 5px;
+   border-radius: 5px;
+}
+
+.skill-component{
+    display: flex;
+    gap:10px;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,183 @@
+.login-container {
+    display: flex;
+    height: 100vh;
+    background-color: rgb(241, 244, 253);
+  }
+  
+  .sideComponent{
+    overflow: hidden;
+  }
+  .logoContainer{
+    width: 700px;
+    height: 100%;
+    position: relative;
+  }  
+  .sideImage{
+    height: 100vh;
+    width: 700px;
+    object-fit: cover;
+  }
+
+  .boardText {
+    font-size: 34px;
+    color: white;
+    position: absolute;
+    text-align: center;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+  }
+  
+  .logotext{
+    font-family:'Poppins', sans-serif ;
+    position: absolute;
+    left:40px;
+    top:30px;
+    color:white;
+    font-weight: bold;
+  }
+
+  .icons {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 10px;
+    left:25%;
+  }
+  
+  .icon {
+    margin: 20px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .userlogincomponents{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 100px;
+  }
+
+  .textinputs form{
+    display:flex;
+    justify-content: center;
+    flex-direction: column; 
+    gap:10px;
+    padding:20px;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    border-radius:15px;
+
+  }
+  .textinputs input{
+    width: 300px;
+    height: 15px;
+    padding:15px;
+    border-radius: 10px;
+    border-style:none ;
+    background-color: rgba(128, 128, 128, 0.308);
+  }
+  
+  .userlogincomponents .signin{
+    background: linear-gradient(180deg, #4285F4 0%, #286DE0 100%);
+    color:white;
+    padding:8px;
+    border-style: none;
+    border-radius: 10px;
+    cursor:pointer ;
+    font-weight: bold;
+
+  }
+
+  .googlebtncontainer{
+    padding:8px;
+    border:1px solid rgba(128, 128, 128, 0.402);
+    border-radius: 10px;
+    display: flex;
+    justify-content:space-around;
+    width: fit-content;
+    gap:10px;
+    cursor: pointer;
+    background-color:white;
+  }
+  
+  .signinwithgoogle{
+    background-color:white;
+    color:grey;
+    border-style: none;
+    cursor: pointer;
+  }
+
+@media (max-width: 768px) {
+  .login-container {
+    background: linear-gradient(180deg, #4286f4fe 0%, #286be04e 100%);
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .sideComponent{
+    overflow: hidden;
+  }
+
+ .sideImage {
+  display:none;
+ }
+
+ .logoContainer{
+  height:100px;
+  width: 100%;
+  justify-self: center;
+  align-items: center;
+ }
+
+  .boardText {
+    position: absolute;
+    font-size: 26px;
+    background: none;
+    left: 120px; 
+    bottom: 0;
+    transform: translateX(-50%);
+  }
+
+  .logotext {
+    position: absolute;
+    font-size: 12px;
+    background: none;
+    left: -10px; 
+    bottom: 0;
+  }
+
+  .icons {
+    display: none; 
+  }
+
+  .userlogincomponents {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    margin-top: 20px; 
+  }
+
+
+  .textinputs input {
+    width: 84%;
+  }
+
+  .textinputs form{
+   border-radius: 20px;
+   margin-bottom: 10px;
+  }
+
+  .userlogincomponents .signin,
+  .googlebtncontainer {
+    background-color: white;
+  }
+}
