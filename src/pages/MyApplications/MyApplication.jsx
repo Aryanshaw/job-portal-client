@@ -18,7 +18,7 @@ const MyApplication = () => {
   const storedUserData = localStorage.getItem("userData");
 
   let userDetails;
-  if (JSON.parse(storedUserData).newSavedUser) {
+  if (JSON.parse(storedUserData)?.newSavedUser) {
     userDetails = JSON.parse(storedUserData).newSavedUser;
   } else {
     userDetails = JSON.parse(storedUserData);
@@ -71,7 +71,7 @@ const MyApplication = () => {
                   <tr key={index}>
                     <td>{application.job.title}</td>
                     <td>{application.job.company}</td>
-                    <td>{application._id}</td>
+                    <td>{application?._id}</td>
                     <td>{application.job.location}</td>
                     <td>{application.job.type}</td>
                   </tr>
