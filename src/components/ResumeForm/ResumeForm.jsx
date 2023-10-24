@@ -91,7 +91,7 @@ const ResumeForm = ({ onClose }) => {
     dispatch(loadingReducer(true));
     try {
       const res = await axios.post(
-        "http://localhost:8800/api/user/createResume",
+        "https://job-portal-api-m1ml.onrender.com/api/user/createResume",
         {
           user: userDetails._id,
           skills: skills,
@@ -125,14 +125,16 @@ const ResumeForm = ({ onClose }) => {
             <label>Skills:</label>
             {skills.map((skill, index) => (
               <div key={index}>
-                <input
-                  type="text"
-                  value={skill}
-                  onChange={(event) => handleSkillChange(index, event)}
-                />
-                <button type="button" onClick={() => removeSkill(index)}>
-                  Remove
-                </button>
+                <div style={{ display: "flex", gap: "10px" }}>
+                  <input
+                    type="text"
+                    value={skill}
+                    onChange={(event) => handleSkillChange(index, event)}
+                  />
+                  <button type="button" onClick={() => removeSkill(index)}>
+                    Remove
+                  </button>
+                </div>
               </div>
             ))}
             <button type="button" onClick={addSkill}>
@@ -144,16 +146,40 @@ const ResumeForm = ({ onClose }) => {
             <label>Experience:</label>
             {experience.map((exp, index) => (
               <div key={index}>
-                <input
-                  type="text"
-                  name="title"
-                  placeholder="Title"
-                  value={exp.title || ""}
-                  onChange={(event) => handleExperienceChange(index, event)}
-                />
-                <button type="button" onClick={() => removeExperience(index)}>
-                  Remove
-                </button>
+                <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                  <input
+                    type="text"
+                    name="title"
+                    placeholder="Title"
+                    value={exp.title || ""}
+                    onChange={(event) => handleExperienceChange(index, event)}
+                  />
+                  <input
+                    type="text"
+                    name="companyName"
+                    placeholder="company name"
+                    value={exp.companyName || ""}
+                    onChange={(event) => handleExperienceChange(index, event)}
+                  />
+                  <textarea
+                    name="responsibility"
+                    rows={3}
+                    placeholder="responsibilities"
+                    value={exp.responsibility || ""}
+                    onChange={(event) => handleExperienceChange(index, event)}
+                  />
+                  <input
+                    type="text"
+                    name="dateWorkedOn"
+                    placeholder="date worked on"
+                    value={exp.dateWorkedOn || ""}
+                    onChange={(event) => handleExperienceChange(index, event)}
+                  />
+
+                  <button type="button" onClick={() => removeExperience(index)}>
+                    Remove
+                  </button>
+                </div>
               </div>
             ))}
             <button type="button" onClick={addExperience}>
@@ -165,7 +191,7 @@ const ResumeForm = ({ onClose }) => {
             <label>Projects:</label>
             {projects.map((project, index) => (
               <div key={index}>
-                <div>
+                <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
                   <input
                     type="text"
                     name="title"
@@ -180,10 +206,17 @@ const ResumeForm = ({ onClose }) => {
                     value={project.description || ""}
                     onChange={(event) => handleProjectChange(index, event)}
                   />
+                  <input
+                    type="text"
+                    name="dateWorkedOn"
+                    placeholder="date worked on"
+                    value={project.dateWorkedOn || ""}
+                    onChange={(event) => handleProjectChange(index, event)}
+                  />
+                  <button type="button" onClick={() => removeProject(index)}>
+                    Remove
+                  </button>
                 </div>
-                <button type="button" onClick={() => removeProject(index)}>
-                  Remove
-                </button>
               </div>
             ))}
             <button type="button" onClick={addProject}>

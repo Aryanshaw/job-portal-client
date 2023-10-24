@@ -44,7 +44,7 @@
     margin-bottom: 5px;
   }
   
-  .resumeform input[type="text"] {
+  .resumeform input[type="text"] ,.resumeform textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;

@@ -24,7 +24,7 @@ const ExploreJobs = () => {
     dispatch(jobLoading(true));
     try {
       const result = await axios.get(
-        "http://localhost:8800/api/jobs/getAllJobs"
+        "https://job-portal-api-m1ml.onrender.com/api/jobs/getAllJobs"
       );
       dispatch(getAllJobs(result.data));
     } catch (err) {
@@ -38,15 +38,20 @@ const ExploreJobs = () => {
     fetchAllJobs();
   }, []);
 
-
   return (
     <div>
       <Navbar />
       <div className="explore-center-component">
         <Link to="/">
-          <IoIosArrowBack color="white" size={26} />
+          <IoIosArrowBack
+            color="white"
+            size={26}
+            style={{
+              marginTop: "8px",
+            }}
+          />
         </Link>
-        <h1>Explore all the jobs available</h1>
+        <h2>Explore all the jobs available</h2>
       </div>
       {isLoading ? (
         <Loader />

@@ -30,7 +30,7 @@ const Profile = () => {
     dispatch(loadingReducer(true));
     try {
       const resumeData = await axios.get(
-        `http://localhost:8800/api/user/getResumeByUserId/${userDetails._id}`
+        `https://job-portal-api-m1ml.onrender.com/api/user/getResumeByUserId/${userDetails._id}`
       );
       dispatch(getUserResume(resumeData.data.resume));
     } catch (err) {

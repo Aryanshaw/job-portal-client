@@ -76,12 +76,18 @@
 
 @media (max-width: 780px) {
     .search-container{
-        width: 300px;
+        max-width: 400px;
         align-self: center !important;
         display: flex;
         align-items: center;
     }
 
+    .search-container input {
+      max-width: 260px;
+      padding: 10px;
+      border: none;
+      color:black  !important;
+  }
     .icon {
       font-size: 35px;
     }

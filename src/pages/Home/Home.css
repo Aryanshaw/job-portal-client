@@ -27,3 +27,32 @@ p{
     font-size: 10px;
     letter-spacing:1px;
 }
+@media (max-width: 780px){
+    .center-component h1{
+       font-size: 24px;
+       width: 350px;
+       text-align: center;
+       display: flex;
+    }
+  
+    .center-component p{
+      /* width: 310px; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+   
+    .center-component{
+      display:flex;
+      align-items:center;
+      justify-content: center;
+      padding: 0px;
+      padding-bottom: 40px;
+      height: 100%;
+      width: 100%;
+    }
+    .center-container-title{
+      padding-left: 30px;
+    }
+}

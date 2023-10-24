@@ -30,7 +30,7 @@ const JobComponent = ({ jobDetails, jobIndex }) => {
           </div>
           <p className="job-salary">₹{jobDetails.salary} /month</p>
         </div>
-        <div style={{ marginTop: "-10px" }}>
+        <div style={{ marginTop: "-10px" }} className="job-skill-container">
           <h4>Skills requirements</h4>
           <div className="skill-list">
             {jobDetails.requirements &&
@@ -65,7 +65,7 @@ const JobComponent = ({ jobDetails, jobIndex }) => {
                 }}
               >
                 <AiOutlineCalendar />
-                <p className="job-lower-title">last date</p>
+                <p className="job-lower-title">End date</p>
               </div>
               <p className="job-lower-font">{jobDetails.applicationDeadline}</p>
             </div>

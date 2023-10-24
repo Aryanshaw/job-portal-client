@@ -37,10 +37,13 @@ const Login = () => {
     e.preventDefault();
     dispatch(loadingReducer(true));
     try {
-      const res = await axios.post("http://localhost:8800/api/auth/login", {
-        username: username,
-        password: password,
-      });
+      const res = await axios.post(
+        "https://job-portal-api-m1ml.onrender.com/api/auth/login",
+        {
+          username: username,
+          password: password,
+        }
+      );
       dispatch(getUserData(res.data));
       setSuccess(true);
       localStorage.setItem("loggedin", true);
@@ -57,12 +60,15 @@ const Login = () => {
     e.preventDefault();
     dispatch(loadingReducer(true));
     try {
-      const res = await axios.post("http://localhost:8800/api/auth/register", {
-        username: createUserName,
-        email: createEmail,
-        password: createPassword,
-        phone: createPhone,
-      });
+      const res = await axios.post(
+        "https://job-portal-api-m1ml.onrender.com/api/auth/register",
+        {
+          username: createUserName,
+          email: createEmail,
+          password: createPassword,
+          phone: createPhone,
+        }
+      );
       dispatch(getUserData(res.data));
       localStorage.setItem("loggedin", true);
       navigation("/", { replace: true });
@@ -99,7 +105,8 @@ const Login = () => {
         {active === "signin" ? (
           <>
             <h1>Sign in</h1>
-            <p>Sign in to your account</p>
+            <span>Sign in to your account</span>
+            <br />
             <div className="googlebtncontainer">
               <img src={googleimg} width={15} height={15} alt="Google" />
               <button className="signinwithgoogle">Sign in with gooogle</button>
@@ -123,7 +130,7 @@ const Login = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <p>Forgot password?</p>
+                <span>Forgot password?</span>
                 <button className="signin" onClick={userLoginHandler}>
                   Sign in
                 </button>
@@ -139,12 +146,12 @@ const Login = () => {
                 }}
               >
                 Dont have an account ?
-                <p
+                <span
                   style={{ color: "blue", cursor: "pointer" }}
                   onClick={() => setActive("signup")}
                 >
                   register here
-                </p>
+                </span>
               </span>
             </div>
           </>
@@ -152,7 +159,8 @@ const Login = () => {
           <>
             {/* Register component */}
             <h1>Sign up</h1>
-            <p>Create an account</p>
+            <span>Create an account</span>
+            <br />
             <div className="textinputs">
               <form>
                 <label>User Name</label>
@@ -203,13 +211,13 @@ const Login = () => {
                 }}
               >
                 Already have
-                <p
+                <span
                   style={{ color: "blue", cursor: "pointer" }}
                   onClick={() => setActive("signin")}
                 >
                   {" "}
                   an account?
-                </p>
+                </span>
               </span>
             </div>
           </>

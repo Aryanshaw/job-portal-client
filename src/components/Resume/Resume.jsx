@@ -92,7 +92,9 @@ const Resume = () => {
       ) : (
         <div>
           <h5>Do not have a resume? create a new one</h5>
-          <button onClick={openForm}>Create Resume</button>
+          <button onClick={openForm} className="detail-btn">
+            Create Resume
+          </button>
         </div>
       )}
       {resumeForm && <ResumeForm onClose={closeForm} />}

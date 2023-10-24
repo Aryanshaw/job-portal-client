@@ -12,13 +12,14 @@ import {
   loadingSelector,
 } from "../../utils/reducers/userSlice";
 import axios from "axios";
-import Loader from "../../components/Loader/Loader";
+import { ProgressBar } from "react-loader-spinner";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchInputActive, setSearchInputActive] = useState(false);
   let isLoggedIn = localStorage.getItem("loggedin");
   const dispatch = useDispatch();
+  const isLoading = useSelector(loadingSelector);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -31,7 +32,9 @@ const Navbar = () => {
   const logout = async () => {
     dispatch(loadingReducer(true));
     try {
-      const res = await axios.post("http://localhost:8800/api/auth/logout");
+      const res = await axios.post(
+        "https://job-portal-api-m1ml.onrender.com/api/auth/logout"
+      );
       if (res.data.message === "Logout successful")
         localStorage.setItem("loggedin", false);
     } catch (err) {
@@ -69,12 +72,22 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <h4 className="navbar-item">Collection</h4>
+          <Link to="/myapplications">
+            <h4 className="navbar-item">My Applications</h4>
+          </Link>
         </li>
-        <li>
-          <h4 className="navbar-item">Community</h4>
-        </li>
-        {isLoggedIn === "false" ? (
+
+        {isLoading ? (
+          <ProgressBar
+            height="40"
+            width="40"
+            ariaLabel="progress-bar-loading"
+            wrapperStyle={{}}
+            wrapperClass="progress-bar-wrapper"
+            borderColor="black"
+            barColor="#51E5FF"
+          />
+        ) : isLoggedIn === "false" ? (
           <li className="signin-btn">
             <Link to="/login">
               <button>Sign in</button>

@@ -13,12 +13,14 @@ import {
   jobLoading,
 } from "../../utils/reducers/jobSlice";
 
-const SearchInput = ({ width, fetchImage }) => {
+const SearchInput = ({ width }) => {
   const inputStyle = {
     width: width || "200px",
     alignSelf: "center",
     border: "none",
+    textTransform: "lowercase",
   };
+
   const [text, setText] = useState("");
   const dispatch = useDispatch();
   const [hitEnter, setHitEnter] = useState("");
@@ -33,7 +35,7 @@ const SearchInput = ({ width, fetchImage }) => {
     dispatch(jobLoading(true));
     try {
       const result = await axios.post(
-        "http://localhost:8800/api/jobs/getJobByInput",
+        "https://job-portal-api-m1ml.onrender.com/api/jobs/getJobByInput",
         {
           title: text,
         }
@@ -82,8 +84,10 @@ const SearchInput = ({ width, fetchImage }) => {
           <div onClick={() => handleRecommendationClick("backend developer")}>
             backend developer
           </div>
-          <div onClick={() => handleRecommendationClick("fullStack developer")}>
-            fullStack developer
+          <div
+            onClick={() => handleRecommendationClick("full stack developer")}
+          >
+            full stack developer
           </div>
         </div>
       )}

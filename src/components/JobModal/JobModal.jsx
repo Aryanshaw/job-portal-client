@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./JobModal.css";
 import { RxCrossCircled } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,8 +19,12 @@ import {
   jobAppliedSelector,
   jobLoading,
   jobErrorSelector,
+  jobApplicationReducer,
+  applicationSelector,
 } from "../../utils/reducers/jobSlice";
 import Loader from "../../components/Loader/Loader";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const JobModal = ({ onClose, data, modalIndex, isOpen }) => {
   const navigation = useNavigate();
@@ -35,9 +39,10 @@ const JobModal = ({ onClose, data, modalIndex, isOpen }) => {
   const [jobData, setJobData] = useState([]);
   const [fetchJobSuccess, setFetchJobSuccess] = useState("");
   const error = useSelector(jobErrorSelector);
+  const application = useSelector(applicationSelector);
 
   let applied;
-  let applicationFilled;
+  let applicationFilled = false;
 
   let userDetails;
   if (JSON.parse(storedUserData).newSavedUser) {
@@ -59,7 +64,7 @@ const JobModal = ({ onClose, data, modalIndex, isOpen }) => {
     dispatch(loadingReducer(true));
     try {
       const resumeData = await axios.get(
-        `http://localhost:8800/api/user/getResumeByUserId/${userDetails._id}`
+        `https://job-portal-api-m1ml.onrender.com/api/user/getResumeByUserId/${userDetails._id}`
       );
       dispatch(getUserResume(resumeData.data.resume));
     } catch (err) {
@@ -79,20 +84,25 @@ const JobModal = ({ onClose, data, modalIndex, isOpen }) => {
       dispatch(loadingReducer(true));
       try {
         const result = await axios.post(
-          `http://localhost:8800/api/jobs/applyForJobById/${data._id}`,
+          `https://job-portal-api-m1ml.onrender.com/api/jobs/applyForJobById/${data._id}`,
           {
             job: data._id,
             user: userDetails,
             coverLetter: "I am interested in this job",
-            resume: userResume,
+            resume: userResume._id,
           }
         );
-        console.log(result.data);
+        toast.success(result.data.message, {
+          autoClose: 3000,
+        });
         dispatch(jobSuccess(result.data.message));
         dispatch(applyToJob(result.data.application));
         if (result.data) onClose();
       } catch (err) {
-        dispatch(jobError(err.response.data.submitted));
+        toast.error(err.response.data.error, {
+          autoClose: 3000,
+        });
+        dispatch(jobError(err.response.data));
       }
       dispatch(loadingReducer(false));
     }
@@ -102,11 +112,13 @@ const JobModal = ({ onClose, data, modalIndex, isOpen }) => {
     setLoading(true);
     try {
       const res = await axios.get(
-        `http://localhost:8800/api/jobs/getJobApplicationByJobId/${data._id}`
+        `https://job-portal-api-m1ml.onrender.com/api/jobs/getJobApplicationByJobId/${data._id}`
       );
-      setJobData(res.data);
+      // console.log(res.data)
+      dispatch(jobApplicationReducer(res.data));
       setFetchJobSuccess("success");
     } catch (err) {
+      console.log(err.message);
       dispatch(jobError(err.message));
     }
     setLoading(false);
@@ -120,11 +132,23 @@ const JobModal = ({ onClose, data, modalIndex, isOpen }) => {
     applied = jobData?.applied;
   }
 
-  if (error === "You have already applied for this job") {
+  if (error) {
     applicationFilled = true;
   } else {
     applicationFilled = false;
   }
+
+  function compareObject(application, data, userDetails) {
+    if (
+      application?.job?._id === data._id &&
+      userDetails._id === application.user
+    )
+      return true;
+    else return false;
+  }
+
+  if (application)
+    applicationFilled = compareObject(application, data, userDetails);
 
   return (
     <div className="modal">
@@ -168,7 +192,7 @@ const JobModal = ({ onClose, data, modalIndex, isOpen }) => {
                     </span>
                   ))}
                 </div>
-                {error !== true ? (
+                {!applicationFilled ? (
                   <button className="detail-btn" onClick={handleJobApply}>
                     Apply to this job
                   </button>
@@ -179,6 +203,7 @@ const JobModal = ({ onClose, data, modalIndex, isOpen }) => {
                 )}
               </div>
             </div>
+            <ToastContainer />
           </div>
         )}
       </div>
