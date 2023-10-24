@@ -87,13 +87,7 @@ const Navbar = () => {
             borderColor="black"
             barColor="#51E5FF"
           />
-        ) : isLoggedIn === "false" ? (
-          <li className="signin-btn">
-            <Link to="/login">
-              <button>Sign in</button>
-            </Link>
-          </li>
-        ) : (
+        ) : isLoggedIn === "true" ? (
           <li>
             <div className="user-icon-component">
               <Link to="/profile">
@@ -109,6 +103,12 @@ const Navbar = () => {
                 <FiLogOut />
               </div>
             </div>
+          </li>
+        ) : (
+          <li className="signin-btn">
+            <Link to="/login">
+              <button>Sign in</button>
+            </Link>
           </li>
         )}
       </ul>
